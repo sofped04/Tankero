@@ -1,0 +1,714 @@
+/* ==========================================================
+   Tankero - stylesheet (mobile-first)
+   Basis-styles = mobil (Figma-framen på 402px).
+   Breakpoints:  768px = tablet   |   1024px = desktop
+   ========================================================== */
+
+/* ==========================================================
+   1. DESIGN TOKENS (farver og mål fra Figma)
+   ========================================================== */
+:root {
+  --creme: #f8f4ec;        /* 60% Creme */
+  --petrol: #244e52;       /* 30% Petrolgrøn */
+  --gul: #e4a719;          /* 10% Gul */
+  --tekst: #263238;        /* tekst Mørk Gråblå */
+  --salvie: #b8cdbb;       /* salviegrøn */
+  --lys-salvie: #e9f1eb;   /* lys salvie */
+
+  --radius: 13px;
+  --radius-stor: 15px;
+  --pille: 999px;
+
+  --side-luft: 20px;                       /* luft i siderne af siden */
+  --sektion-luft: clamp(56px, 8vw, 96px);  /* luft mellem sektioner */
+  --max-bredde: 1200px;
+}
+
+@media (min-width: 768px) {
+  :root { --side-luft: 40px; }
+}
+
+/* ==========================================================
+   2. RESET OG GRUNDLÆGGENDE
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+/* Plads over sektioner man hopper til med #-links (f.eks. forside.html#behov) */
+[id] { scroll-margin-top: 24px; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--creme);
+  color: var(--tekst);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+ul { list-style: none; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+
+:focus-visible { outline: 3px solid var(--gul); outline-offset: 2px; }
+
+/* Skjult for øjet, men læses op af skærmlæsere */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* "Spring til indhold"-link for tastaturbrugere */
+.spring-til {
+  position: absolute;
+  left: 16px; top: -100px;
+  z-index: 10;
+  padding: 12px 20px;
+  background: var(--gul);
+  border-radius: var(--pille);
+  font-weight: 600;
+  text-decoration: none;
+}
+.spring-til:focus { top: 16px; }
+
+.container {
+  width: 100%;
+  max-width: calc(var(--max-bredde) + 2 * var(--side-luft));
+  margin-inline: auto;
+  padding-inline: var(--side-luft);
+}
+
+/* ==========================================================
+   3. TYPOGRAFI (Figma: H1-H5)
+   ========================================================== */
+.h1 { font-size: clamp(40px, 5vw, 56px); font-weight: 800; line-height: 1.2; }
+.h2 { font-size: clamp(28px, 3vw, 36px); font-weight: 800; line-height: 1.2; }
+.h3 { font-size: 20px; font-weight: 700; }
+.h4 { font-size: 18px; font-weight: 600; }
+.h5 { font-size: 16px; font-weight: 500; }
+
+/* ==========================================================
+   4. KNAPPER
+   ========================================================== */
+.knap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 283px;
+  min-height: 44px;
+  padding: 10px 24px;
+  background: var(--gul);
+  border-radius: var(--pille);
+  font-weight: 500;
+  text-decoration: none;
+  transition: filter .15s;
+}
+.knap:hover { filter: brightness(1.07); }
+.knap img { width: 13.26px; height: 11.08px; }
+
+/* ==========================================================
+   5. HEADER + NAVIGATION
+   Mobil: burger | logo | søg      Desktop: logo | links | søg
+   ========================================================== */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 32px 24px;
+}
+.site-header__burger img { width: 31.1px; height: 19.74px; }
+.site-header__logo img { width: 43.35px; height: 40.94px; }
+.site-header__soeg img { width: 23.95px; height: 23.95px; }
+
+/* Logoet står i midten på mobil */
+.site-header__logo { order: 2; }
+.site-header__burger { order: 1; }
+.site-header__soeg { order: 3; }
+
+.site-nav { display: none; }
+
+@media (min-width: 1024px) {
+  .site-header__burger { display: none; }
+  .site-header__logo { order: 1; }
+  .site-nav { display: block; order: 2; }
+  .site-header__soeg { order: 3; }
+
+  .site-nav ul { display: flex; align-items: center; gap: 4px; }
+  .site-nav a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: var(--pille);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .15s;
+  }
+  .site-nav a:hover { background: var(--lys-salvie); }
+  .site-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--gul); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+  .site-nav .nav-gul { background: var(--gul); margin-right: 8px; }
+  .site-nav .nav-gul:hover { background: var(--gul); filter: brightness(1.07); }
+  .site-nav .nav-gul[aria-current="page"] { text-decoration-color: var(--petrol); }
+}
+
+/* ---------- "Gå tilbage"-link ---------- */
+.tilbage {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 0;
+  color: var(--petrol);
+  text-decoration: none;
+}
+.tilbage:hover { text-decoration: underline; }
+.tilbage img { width: 8.36px; height: 14.73px; transform: rotate(180deg); }
+
+/* ==========================================================
+   6. MAIN OG FÆLLES SEKTIONER
+   Sektionerne i <main> står i en flex-kolonne med fast luft imellem.
+   padding-bottom giver luft ned til footeren.
+   ========================================================== */
+main.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sektion-luft);
+  padding-top: 8px;
+  padding-bottom: var(--sektion-luft);
+}
+/* "Gå tilbage" skal stå tæt på overskriften, ikke med en hel sektions luft */
+main.container > .tilbage { margin-bottom: calc(var(--sektion-luft) * -1 + 16px); align-self: flex-start; }
+
+/* ---------- Hero ---------- */
+.hero { display: flex; flex-direction: column; gap: 20px; }
+.hero__tekst { display: flex; flex-direction: column; gap: 12px; }
+.hero__billede {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 357 / 188;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.hero__billede--forside { object-position: 50% 45%; border: .44px solid rgba(0, 0, 0, .12); }
+.hero__billede--om { aspect-ratio: 360 / 241; object-position: bottom; }
+
+@media (min-width: 768px) {
+  .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+  .hero__billede { aspect-ratio: 4 / 3; }
+
+  /* Om os: titel og tekst til venstre, billede til højre */
+  .hero--om {
+    grid-template-areas:
+      "titel billede"
+      "tekst billede";
+    align-items: start;
+    row-gap: 24px;
+  }
+  .hero--om .hero__titel { grid-area: titel; align-self: end; }
+  .hero--om .hero__billede { grid-area: billede; }
+  .hero--om .hero__tekst { grid-area: tekst; }
+}
+
+/* ---------- "Brug for hjælp nu?" ---------- */
+.hjaelp-boks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 24px 34px;
+  background: var(--petrol);
+  border-radius: var(--radius);
+  color: var(--creme);
+}
+.hjaelp-boks__tekst { display: flex; flex-direction: column; gap: 22px; align-self: stretch; }
+.hjaelp-boks__titel { display: flex; align-items: center; gap: 15px; }
+
+.udraab { position: relative; flex: none; width: 31.57px; height: 31.57px; }
+.udraab img { width: 100%; height: 100%; }
+.udraab span {
+  position: absolute; left: 11px; top: 3px;
+  font-size: 27.87px; font-weight: 800; font-style: italic; line-height: 1;
+  color: var(--petrol);
+}
+.hjaelp-boks .knap { color: var(--tekst); }
+
+@media (min-width: 768px) {
+  .hjaelp-boks { flex-direction: row; justify-content: space-between; padding: 40px 48px; }
+  .hjaelp-boks__tekst { align-self: center; max-width: 520px; }
+}
+
+/* ---------- Valg-kort (Snak med nogen osv.) ---------- */
+.kort-liste { display: grid; gap: 16px; }
+section > h2 + .kort-liste { margin-top: 24px; }
+
+.kort {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 65.33px;
+  height: 100%;
+  padding: 10px 20px 10px 15px;
+  background: var(--lys-salvie);
+  border: 1.5px solid var(--petrol);
+  border-radius: var(--radius);
+  font-size: 17.42px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.kort:hover { background: #dde9e0; transform: translateY(-2px); }
+.kort__ikon { position: relative; flex: none; width: 43.56px; height: 43.55px; }
+.kort__ikon > img { width: 100%; height: 100%; }
+.kort__tekst { flex: 1; }
+.kort__pil { flex: none; width: 20.17px; height: 18.64px; }
+
+/* Person-ikonet består af tre lag fra Figma */
+.person { position: absolute; left: 11px; top: 6px; width: 22.48px; height: 32.23px; }
+.person__krop { position: absolute; inset: 0; width: 100%; height: 100%; }
+.person__hoved { position: absolute; left: 4.75px; top: 3.17px; width: 11.02px; height: 10.17px; }
+
+@media (min-width: 768px) {
+  .kort-liste { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .behov .kort-liste { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- "Hvordan har du det idag?" (radioknapper) ---------- */
+.humoer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26px 24px 26px;
+  background: var(--salvie);
+  border-radius: var(--radius);
+}
+.humoer > h2 { align-self: stretch; }
+.humoer__form { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.humoer fieldset { width: 100%; min-width: 0; border: 0; }
+.humoer legend { margin-top: 2px; padding: 0; }
+
+.humoer__valg {
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 5vw, 23px);
+  margin-top: 25px;
+}
+.smiley {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 91px;
+  min-height: 119px;
+  padding: 12.58px 6px 8px;
+  background: var(--creme);
+  border: 2px solid var(--petrol);
+  border-radius: 10.84px;
+  text-align: center;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background .15s, box-shadow .15s;
+}
+.smiley:hover { background: var(--lys-salvie); }
+/* Den valgte smiley (radioknappen inde i label er :checked) */
+.smiley:has(input:checked) { background: var(--lys-salvie); box-shadow: 0 0 0 3px var(--gul); }
+.smiley:has(input:focus-visible) { outline: 3px solid var(--gul); outline-offset: 2px; }
+.smiley > img { width: 49.9px; height: 49.92px; }
+.smiley--okay { width: 90px; }
+
+/* Øjenbrynene på "Okay"-smileyen er to små streger fra Figma */
+.bryn { position: absolute; top: 28.94px; width: 5.6px; height: 2.72px; display: flex; align-items: center; justify-content: center; }
+.bryn--v { left: 30.11px; }
+.bryn--h { left: 50.88px; }
+.bryn > span { position: relative; flex: none; width: 6.24px; height: 0; }
+.bryn--v > span { transform: rotate(-26deg); }
+.bryn--h > span { transform: rotate(26deg); }
+.bryn img { position: absolute; left: 0; top: -1.48px; width: 100%; height: 1.485px; }
+
+.humoer__valgt { margin-top: 15px; }
+/* "Du har valgt": vis kun teksten for den valgte smiley */
+.humoer__valgt span { display: none; }
+.humoer__valgt .valgt-0 { display: inline; }
+.humoer:has(input:checked) .humoer__valgt .valgt-0 { display: none; }
+.humoer:has(#humoer-1:checked) .valgt-1,
+.humoer:has(#humoer-2:checked) .valgt-2,
+.humoer:has(#humoer-3:checked) .valgt-3 { display: inline; }
+.humoer .knap { margin-top: 23px; }
+
+@media (min-width: 768px) {
+  .humoer { padding: 40px 48px; }
+  .humoer > h2, .humoer legend { text-align: center; }
+  .humoer__valg { gap: 32px; }
+  .smiley { width: 120px; min-height: 140px; padding-top: 20px; }
+  .smiley--okay { width: 120px; }
+  .bryn--v { left: 44.6px; top: 36.36px; }
+  .bryn--h { left: 65.4px; top: 36.36px; }
+}
+@media (min-width: 1024px) {
+  .humoer { width: 100%; max-width: 760px; align-self: center; }
+}
+
+/* ==========================================================
+   7. FOOTER
+   ========================================================== */
+.site-footer { background: var(--petrol); color: var(--creme); }
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-block: 36px 34px;
+}
+.site-footer a:hover { text-decoration: underline; }
+
+.site-footer__logo { display: inline-block; }
+.site-footer__logo img { width: 154.4px; height: 45px; }
+.site-footer__titel { margin-top: 40px; font-size: 21.11px; font-weight: 600; }
+
+address { font-style: normal; }
+.ikon-liste { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+.ikon-liste li { display: flex; align-items: flex-start; gap: 13.5px; }
+.ikon-liste img { flex: none; width: 14.9px; height: 12.87px; margin-top: 3px; }
+.ikon-liste a { text-decoration: none; }
+
+.nyhedsbrev {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 32px 18px 30px;
+  background: var(--salvie);
+  border-radius: 9.52px;
+  color: var(--tekst);
+}
+.nyhedsbrev input {
+  width: 100%;
+  height: 38.57px;
+  margin-top: 14px;
+  padding-inline: 14.87px;
+  background: var(--creme);
+  border: .635px solid var(--petrol);
+  border-radius: 12.25px;
+  font-size: 15.23px;
+}
+.nyhedsbrev input::placeholder { color: var(--petrol); opacity: 1; }
+.nyhedsbrev .knap { align-self: center; margin-top: 16px; max-width: 267px; }
+
+.site-footer__bund { display: flex; flex-direction: column; gap: 20px; }
+.some { display: flex; gap: 7.4px; }
+.some img { width: 43.55px; height: 43.55px; transition: transform .15s; }
+.some a:hover img { transform: scale(1.08); }
+.site-footer__privat { text-underline-offset: 2px; }
+.site-footer__copy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "MuseoModerno", sans-serif;
+  font-weight: 700;
+  font-size: 18.36px;
+}
+.site-footer__copy img { width: 18.17px; height: 18.17px; }
+
+@media (min-width: 768px) {
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding-block: 56px 40px;
+  }
+  .site-footer__bund {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(248, 244, 236, .25);
+  }
+  .site-footer__copy { margin-left: auto; }
+  .nyhedsbrev { align-self: center; }
+}
+@media (min-width: 1024px) {
+  .site-footer__inner { grid-template-columns: 1fr 420px; }
+}
+
+/* ==========================================================
+   8. LOADING-SIDE (index.html)
+   ========================================================== */
+.loading {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 53px;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+.aande {
+  position: relative;
+  width: 238.87px;
+  height: 342.92px;
+  transform-origin: 50% 50%;
+  animation: aande 8.022s infinite;
+}
+.aande__cirkler { width: 238.87px; height: 238.87px; }
+.aande__tekst {
+  position: absolute;
+  left: 50%; top: 274.92px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.aande__ind { animation: tekst-ind 8.022s infinite; }
+.aande__ud  { opacity: 0; animation: tekst-ud 8.022s infinite; }
+
+/* Figma: skalér 0.88 → 1.15 → 0.89 på 8 sek. */
+@keyframes aande {
+  0%    { transform: scale(.8825); animation-timing-function: cubic-bezier(.5, 0, .5, 1); }
+  49.9% { transform: scale(1.1464); animation-timing-function: cubic-bezier(.5, 0, .5, 1); }
+  100%  { transform: scale(.8865); }
+}
+@keyframes tekst-ind {
+  0%, 49.89% { opacity: 1; }
+  49.9%, 100% { opacity: 0; }
+}
+@keyframes tekst-ud {
+  0%, 53.12% { opacity: 0; }
+  53.13%, 99.79% { opacity: 1; }
+  99.8%, 100% { opacity: 0; }
+}
+
+.spring-over {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 176.76px;
+  height: 44px;
+  border: 1.3px solid var(--petrol);
+  border-radius: var(--pille);
+  text-decoration: none;
+  opacity: 0;
+  animation: vis 0s 2s forwards;
+  transition: background .15s;
+}
+.spring-over:hover { background: var(--lys-salvie); }
+.spring-over:focus-visible { opacity: 1; }
+@keyframes vis { to { opacity: 1; } }
+
+@media (min-width: 1024px) {
+  .aande { transform: scale(1.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aande, .aande__ind, .aande__ud { animation: none; }
+  .spring-over { opacity: 1; animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ==========================================================
+   9. MENU-SIDE (mobil-menu)
+   ========================================================== */
+body.menu-side { background: var(--petrol); color: var(--creme); }
+.menu {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+  padding: 32px 29px 220px;
+  overflow: hidden;
+}
+.menu__top { display: flex; align-items: center; justify-content: space-between; }
+.menu__luk img { width: 22px; height: 25.71px; }
+.menu__logo img { width: 43.35px; height: 40.94px; }
+.menu__soeg img { width: 23.95px; height: 23.95px; }
+
+.menu__titel { margin-top: 59px; }
+.menu__liste { display: flex; flex-direction: column; gap: 21.72px; margin-top: 48.6px; }
+.menu__liste li:first-child { margin-bottom: 8px; }
+.menu__knap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 45.28px;
+  padding: 8px 44px 8px 16.4px;
+  background: var(--creme);
+  border: .435px solid var(--tekst);
+  border-radius: 15.24px;
+  color: var(--tekst);
+  text-decoration: none;
+  transition: filter .15s;
+}
+.menu__knap:hover { filter: brightness(.95); }
+.menu__knap--gul { background: var(--gul); padding-left: 40.4px; }
+.menu__udraab {
+  position: absolute; left: 17.43px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 27.87px; font-weight: 800; font-style: italic; line-height: 1;
+}
+.menu__pil { position: absolute; right: 16.07px; top: 50%; transform: translateY(-50%); width: 11.52px; height: 20.28px; }
+
+.menu__streg { width: 149.77px; height: 1.74px; margin: 28px auto 0; transform: translateX(-9.6px) rotate(-.17deg); }
+
+.menu__faq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 51.81px;
+  margin-top: 23px;
+  padding: 8px 16px;
+  border: 1.31px solid var(--creme);
+  border-radius: var(--pille);
+  text-align: center;
+  text-decoration: none;
+  transition: background .15s;
+}
+.menu__faq:hover { background: rgba(248, 244, 236, .08); }
+
+.menu__stor-logo {
+  position: absolute;
+  right: -38px; bottom: -52px;
+  width: 172.9px; height: 163.7px;
+  max-width: none;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   10. OM OS
+   ========================================================== */
+/* ---------- "Med Tankero kan du" + info-boks ---------- */
+.to-kol { display: flex; flex-direction: column; gap: var(--sektion-luft); }
+
+.tjekliste { display: flex; flex-direction: column; gap: 23.65px; margin-top: 23.6px; }
+.tjekliste li { display: flex; align-items: center; gap: 11.3px; max-width: 320px; color: #000; }
+.tjekliste img { flex: none; width: 28.65px; height: 28.65px; }
+
+.info-boks {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px 24px 20px 21px;
+  background: var(--salvie);
+  border-radius: 16.19px;
+  color: #000;
+}
+.info-boks img { flex: none; width: 25.45px; height: 25.45px; margin-top: 5.66px; }
+
+@media (min-width: 768px) {
+  .to-kol { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+  .tjekliste li { max-width: none; }
+  .info-boks { padding: 32px; }
+}
+
+/* ---------- "Hvem står bag?" ---------- */
+.skaber {
+  margin-top: 32px;
+  padding: 24px 24px 8px;
+  background: var(--creme);
+  border: 2px solid var(--salvie);
+  border-radius: var(--radius-stor);
+}
+.skaber__top { display: flex; align-items: center; gap: 15px; }
+.skaber__top img { flex: none; width: 62.95px; height: 62.95px; object-fit: cover; }
+.skaber__top p { margin-top: 4px; }
+
+.historie { margin-top: 26px; color: #000; }
+.historie p + p,
+.historie details p { margin-top: 19px; }
+
+/* "Læs mere" med <details> og <summary> - virker uden JavaScript */
+.historie summary {
+  display: inline-block;
+  padding: 18px 0;
+  color: var(--gul);
+  cursor: pointer;
+  list-style: none;
+}
+.historie summary::-webkit-details-marker { display: none; }
+.historie summary:hover { text-decoration: underline; }
+.historie .laes-mindre { display: none; }
+.historie details[open] .laes-mere { display: none; }
+.historie details[open] .laes-mindre { display: inline; }
+/* Når teksten er åben, står "Læs mindre" nederst */
+.historie details[open] { display: flex; flex-direction: column; }
+.historie details[open] summary { order: 1; }
+
+@media (min-width: 768px) {
+  .skaber { padding: 32px 40px 12px; max-width: 760px; }
+  .historie { max-width: 62ch; }
+}
+
+/* ==========================================================
+   11. KONTAKT
+   ========================================================== */
+.kontakt__grid { display: flex; flex-direction: column; gap: var(--sektion-luft); }
+.kontakt > .h1 { margin-bottom: calc(var(--sektion-luft) * -1 + 42px); }
+
+.kontakt-liste { display: flex; flex-direction: column; gap: 23px; }
+.kontakt-kort {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 62.08px;
+  padding: 8px 16px;
+  background: var(--salvie);
+  border: 1.5px solid var(--petrol);
+  border-radius: var(--radius-stor);
+  color: #000;
+}
+.kontakt-kort img { flex: none; width: 30px; height: auto; }
+.kontakt-kort p { margin-top: 2px; }
+.kontakt-kort a { text-decoration: none; }
+.kontakt-kort a:hover { text-decoration: underline; }
+
+.mail-titel { color: var(--petrol); }
+.mail-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 14px;
+  padding: 50px 33px 46px;
+  background: var(--salvie);
+  border: 1.5px solid var(--petrol);
+  border-radius: var(--radius-stor);
+}
+.felt { display: flex; flex-direction: column; gap: 4px; }
+.felt input,
+.felt textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 8px;
+  background: var(--creme);
+  border: 1.5px solid var(--petrol);
+  border-radius: 8.68px;
+}
+.felt textarea { min-height: 142.39px; padding: 12px 13px; border-radius: 10.85px; resize: vertical; }
+.felt input::placeholder { color: var(--petrol); opacity: 1; }
+.felt textarea::placeholder { color: var(--tekst); opacity: 1; }
+.mail-form .knap { margin-top: 13px; align-self: center; }
+
+@media (min-width: 768px) {
+  .mail-form { padding: 40px; }
+}
+@media (min-width: 1024px) {
+  .kontakt__grid { display: grid; grid-template-columns: 5fr 7fr; align-items: start; gap: 64px; }
+  .kontakt-liste { margin-top: 38px; }   /* flugter med formularen */
+  .mail-form .knap { align-self: flex-start; }
+}
+
+/* ==========================================================
+   12. SIDE UNDER KONSTRUKTION (konstruktion.html)
+   ========================================================== */
+.konstruktion { gap: 24px; }
+.konstruktion > .tilbage { margin-bottom: 0; }

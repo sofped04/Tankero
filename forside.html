@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tankero hjælper dig, mens du venter på hjælp i psykiatrien.">
+  <title>Velkommen til Tankero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=MuseoModerno:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="spring-til" href="#indhold">Spring til indhold</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__burger" href="menu.html" aria-label="Åbn menu">
+        <img src="assets/menu.svg" width="31" height="20" alt="">
+      </a>
+      <a class="site-header__logo" href="forside.html" aria-label="Tankero - til forsiden">
+        <img src="assets/logo.svg" width="43" height="41" alt="">
+      </a>
+      <nav class="site-nav" aria-label="Hovednavigation">
+        <ul>
+          <li><a class="nav-gul" href="konstruktion.html">Få hjælp nu</a></li>
+          <li><a href="konstruktion.html">Snak med nogen</a></li>
+          <li><a href="forside.html#humoer">Hvordan har du det?</a></li>
+          <li><a href="konstruktion.html">Lær om diagnoser</a></li>
+          <li><a href="om-os.html">Om os</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a class="site-header__soeg" href="konstruktion.html" aria-label="Søg">
+        <img src="assets/search.svg" width="24" height="24" alt="">
+      </a>
+    </div>
+  </header>
+
+  <main id="indhold" class="container forside">
+    <section class="hero" aria-labelledby="forside-titel">
+      <div class="hero__tekst">
+        <h1 class="h1" id="forside-titel">Velkommen til Tankero</h1>
+        <p class="h5">Her er plads til at have det svært</p>
+      </div>
+      <img class="hero__billede hero__billede--forside" src="assets/hero.png" width="1705" height="1200" alt="To hænder der rækker ud mod hinanden">
+    </section>
+
+    <section class="hjaelp-boks" id="hjaelp" aria-labelledby="hjaelp-titel">
+      <div class="hjaelp-boks__tekst">
+        <h2 class="hjaelp-boks__titel h3" id="hjaelp-titel">
+          <span class="udraab" aria-hidden="true"><img src="assets/udraabstegn-cirkel.svg" width="32" height="32" alt=""><span>!</span></span>
+          Brug for hjælp nu?
+        </h2>
+        <p>Vi hjælper dig med at håndtere angst, overstimuli, stress og andet.</p>
+      </div>
+      <a class="knap" href="konstruktion.html">Få hjælp nu <img src="assets/arrow-knap.svg" width="13" height="11" alt=""></a>
+    </section>
+
+    <section class="behov" id="behov" aria-labelledby="behov-titel">
+      <h2 class="h2" id="behov-titel">Hvad har du brug for?</h2>
+      <ul class="kort-liste">
+        <li>
+          <a class="kort" href="konstruktion.html">
+            <span class="kort__ikon">
+              <img src="assets/person-cirkel.svg" width="44" height="44" alt="">
+              <span class="person"><img class="person__krop" src="assets/person-krop.svg" alt=""><img class="person__hoved" src="assets/person-hoved.svg" alt=""></span>
+            </span>
+            <span class="kort__tekst">Snak med nogen</span>
+            <img class="kort__pil" src="assets/arrow-kort.svg" width="20" height="19" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="kort" href="konstruktion.html">
+            <span class="kort__ikon"><img src="assets/spoergsmaal.svg" width="44" height="44" alt=""></span>
+            <span class="kort__tekst">Jeg ved ikke hvor jeg starter</span>
+            <img class="kort__pil" src="assets/arrow-kort.svg" width="20" height="19" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="kort" href="konstruktion.html">
+            <span class="kort__ikon"><img src="assets/bog.svg" width="44" height="44" alt=""></span>
+            <span class="kort__tekst">Lær om diagnoser</span>
+            <img class="kort__pil" src="assets/arrow-kort.svg" width="20" height="19" alt="">
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="humoer" id="humoer" aria-labelledby="humoer-titel">
+      <h2 class="h3" id="humoer-titel">Hvordan har du det idag?</h2>
+      <form class="humoer__form" action="konstruktion.html" method="get">
+        <fieldset>
+          <legend>Vælg det, der passer bedst lige nu</legend>
+          <div class="humoer__valg">
+            <label class="smiley">
+              <input class="sr-only" type="radio" name="humoer" value="ikke-saa-godt" id="humoer-1">
+              <img src="assets/smiley-ked.svg" width="50" height="50" alt="">
+              <span>Ikke så godt</span>
+            </label>
+            <label class="smiley smiley--okay">
+              <input class="sr-only" type="radio" name="humoer" value="okay" id="humoer-2">
+              <img src="assets/smiley-mellem.svg" width="50" height="50" alt="">
+              <span class="bryn bryn--v" aria-hidden="true"><span><img src="assets/bryn-venstre.svg" alt=""></span></span>
+              <span class="bryn bryn--h" aria-hidden="true"><span><img src="assets/bryn-hoejre.svg" alt=""></span></span>
+              <span>Okay</span>
+            </label>
+            <label class="smiley">
+              <input class="sr-only" type="radio" name="humoer" value="godt" id="humoer-3">
+              <img src="assets/smiley-glad.svg" width="50" height="50" alt="">
+              <span>Godt</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Teksten skifter med CSS (:has), alt efter hvilken smiley der er valgt -->
+        <p class="humoer__valgt h5" aria-hidden="true">Du har valgt: <span class="valgt-0">...</span><span class="valgt-1">Ikke så godt</span><span class="valgt-2">Okay</span><span class="valgt-3">Godt</span></p>
+        <button class="knap" type="submit">Fortæl mere</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__kontakt">
+        <a class="site-footer__logo" href="forside.html" aria-label="Tankero - til forsiden">
+          <img src="assets/footer-logo.svg" width="154" height="45" alt="">
+        </a>
+        <h2 class="site-footer__titel">Kontakt os</h2>
+        <address>
+          <ul class="ikon-liste">
+            <li><img src="assets/footer-mail.svg" width="15" height="13" alt=""><a href="mailto:tanke@ro.dk"><span class="sr-only">E-mail: </span>tanke@ro.dk</a></li>
+            <li><img src="assets/footer-placering.svg" width="15" height="13" alt=""><span><span class="sr-only">Adresse: </span>Borgergade 33,<br>8600 Silkeborg</span></li>
+            <li><img src="assets/footer-telefon.svg" width="15" height="13" alt=""><a href="tel:+4511223344"><span class="sr-only">Telefon: </span>+45 11 22 33 44</a></li>
+            <li><img src="assets/footer-ur.svg" width="15" height="13" alt=""><span><span class="sr-only">Åbningstider: </span>Man-fredag kl 9-17</span></li>
+          </ul>
+        </address>
+      </div>
+
+      <form class="nyhedsbrev" id="nyhedsbrev" aria-labelledby="nyhedsbrev-titel" novalidate>
+        <h2 class="nyhedsbrev__titel h3" id="nyhedsbrev-titel">Tilmeld nyhedsbrev</h2>
+        <label for="nyhedsbrev-mail">Din e-mailadresse</label>
+        <input id="nyhedsbrev-mail" name="email" type="email" placeholder="E-mail" autocomplete="email">
+        <button class="knap" type="submit">Tilmeld</button>
+      </form>
+
+      <div class="site-footer__bund">
+        <ul class="some" aria-label="Følg os på sociale medier">
+          <li><a href="#" aria-label="Instagram"><img src="assets/instagram.svg" width="44" height="44" alt=""></a></li>
+          <li><a href="#" aria-label="Facebook"><img src="assets/facebook.svg" width="44" height="44" alt=""></a></li>
+          <li><a href="#" aria-label="TikTok"><img src="assets/tiktok.svg" width="44" height="44" alt=""></a></li>
+        </ul>
+        <a class="site-footer__privat" href="konstruktion.html">Privatlivspolitik</a>
+        <p class="site-footer__copy"><img src="assets/copyright.svg" width="18" height="18" alt="Copyright"> Tankero</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

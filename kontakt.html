@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kontakt Tankero på telefon, e-mail eller via formularen.">
+  <title>Kontakt - Tankero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=MuseoModerno:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="spring-til" href="#indhold">Spring til indhold</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__burger" href="menu.html" aria-label="Åbn menu">
+        <img src="assets/menu.svg" width="31" height="20" alt="">
+      </a>
+      <a class="site-header__logo" href="forside.html" aria-label="Tankero - til forsiden">
+        <img src="assets/logo.svg" width="43" height="41" alt="">
+      </a>
+      <nav class="site-nav" aria-label="Hovednavigation">
+        <ul>
+          <li><a class="nav-gul" href="konstruktion.html">Få hjælp nu</a></li>
+          <li><a href="konstruktion.html">Snak med nogen</a></li>
+          <li><a href="forside.html#humoer">Hvordan har du det?</a></li>
+          <li><a href="konstruktion.html">Lær om diagnoser</a></li>
+          <li><a href="om-os.html">Om os</a></li>
+          <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a class="site-header__soeg" href="konstruktion.html" aria-label="Søg">
+        <img src="assets/search.svg" width="24" height="24" alt="">
+      </a>
+    </div>
+  </header>
+
+  <main id="indhold" class="container kontakt">
+    <a class="tilbage" href="forside.html">
+      <img src="assets/tilbage.svg" width="8" height="15" alt="">
+      Gå tilbage
+    </a>
+
+    <h1 class="h1">Kontakt os</h1>
+
+    <div class="kontakt__grid">
+      <section aria-labelledby="info-titel">
+        <h2 class="sr-only" id="info-titel">Kontaktoplysninger</h2>
+        <ul class="kontakt-liste">
+          <li class="kontakt-kort">
+            <img src="assets/kontakt-telefon.svg" width="30" height="26" alt="">
+            <div>
+              <h3 class="h3">Telefon</h3>
+              <p class="h5"><a href="tel:+4511223344">+45 11 22 33 44</a></p>
+            </div>
+          </li>
+          <li class="kontakt-kort">
+            <img src="assets/kontakt-mail.svg" width="29" height="25" alt="">
+            <div>
+              <h3 class="h3">E-mail</h3>
+              <p class="h5"><a href="mailto:tanke@ro.dk">tanke@ro.dk</a></p>
+            </div>
+          </li>
+          <li class="kontakt-kort">
+            <img src="assets/kontakt-ur.svg" width="30" height="26" alt="">
+            <div>
+              <h3 class="h3">Åbningstider</h3>
+              <p class="h5">Mandag til fredag, kl 9-17</p>
+            </div>
+          </li>
+          <li class="kontakt-kort">
+            <img src="assets/kontakt-placering.svg" width="26" height="26" alt="">
+            <div>
+              <h3 class="h3">Vores lokation</h3>
+              <p class="h5">Borgergade 33, 8600 Silkeborg</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="mail" aria-labelledby="mail-titel">
+        <h2 class="mail-titel h3" id="mail-titel">Send os en mail</h2>
+        <form class="mail-form" novalidate>
+          <div class="felt">
+            <label class="h5" for="navn">Navn</label>
+            <input id="navn" name="navn" type="text" placeholder="F.eks. Ib Ibsen" autocomplete="name">
+          </div>
+          <div class="felt">
+            <label class="h5" for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="navn@eksempel.dk" autocomplete="email">
+          </div>
+          <div class="felt">
+            <label class="h5" for="emne">Emne</label>
+            <input id="emne" name="emne" type="text" placeholder="Hvad drejer din mail sig om?">
+          </div>
+          <div class="felt">
+            <label class="h5" for="besked">Din besked</label>
+            <textarea id="besked" name="besked" rows="5" placeholder="Skriv din besked her..."></textarea>
+          </div>
+          <button class="knap" type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__kontakt">
+        <a class="site-footer__logo" href="forside.html" aria-label="Tankero - til forsiden">
+          <img src="assets/footer-logo.svg" width="154" height="45" alt="">
+        </a>
+        <h2 class="site-footer__titel">Kontakt os</h2>
+        <address>
+          <ul class="ikon-liste">
+            <li><img src="assets/footer-mail.svg" width="15" height="13" alt=""><a href="mailto:tanke@ro.dk"><span class="sr-only">E-mail: </span>tanke@ro.dk</a></li>
+            <li><img src="assets/footer-placering.svg" width="15" height="13" alt=""><span><span class="sr-only">Adresse: </span>Borgergade 33,<br>8600 Silkeborg</span></li>
+            <li><img src="assets/footer-telefon.svg" width="15" height="13" alt=""><a href="tel:+4511223344"><span class="sr-only">Telefon: </span>+45 11 22 33 44</a></li>
+            <li><img src="assets/footer-ur.svg" width="15" height="13" alt=""><span><span class="sr-only">Åbningstider: </span>Man-fredag kl 9-17</span></li>
+          </ul>
+        </address>
+      </div>
+
+      <form class="nyhedsbrev" id="nyhedsbrev" aria-labelledby="nyhedsbrev-titel" novalidate>
+        <h2 class="nyhedsbrev__titel h3" id="nyhedsbrev-titel">Tilmeld nyhedsbrev</h2>
+        <label for="nyhedsbrev-mail">Din e-mailadresse</label>
+        <input id="nyhedsbrev-mail" name="email" type="email" placeholder="E-mail" autocomplete="email">
+        <button class="knap" type="submit">Tilmeld</button>
+      </form>
+
+      <div class="site-footer__bund">
+        <ul class="some" aria-label="Følg os på sociale medier">
+          <li><a href="#" aria-label="Instagram"><img src="assets/instagram.svg" width="44" height="44" alt=""></a></li>
+          <li><a href="#" aria-label="Facebook"><img src="assets/facebook.svg" width="44" height="44" alt=""></a></li>
+          <li><a href="#" aria-label="TikTok"><img src="assets/tiktok.svg" width="44" height="44" alt=""></a></li>
+        </ul>
+        <a class="site-footer__privat" href="konstruktion.html">Privatlivspolitik</a>
+        <p class="site-footer__copy"><img src="assets/copyright.svg" width="18" height="18" alt="Copyright"> Tankero</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
